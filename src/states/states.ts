@@ -1,6 +1,6 @@
 class BaseState {
   name: string;
-  remarks: [];
+  remarks: any;
   type: string;
 
   constructor(name: string) {
@@ -152,7 +152,7 @@ class CarePlanEndState extends BaseState {
 
 class ProcedureState extends BaseState {
   codes: any;
-  duration: undefined;
+  duration: any;
   constructor(name: string, codes: any, duration = undefined) {
     super(name);
     this.type = 'Procedure';
@@ -173,7 +173,7 @@ class ImagingStudyState extends BaseState {
   series: any;
   procedureCode: string | null;
 
-  constructor(name: string, procedureCode: string, series: any) {
+  constructor(name: string, procedureCode: string | null, series: any) {
     super(name);
     this.type = 'ImagingStudy';
     this.procedureCode = procedureCode;
@@ -190,9 +190,9 @@ class ImagingStudyState extends BaseState {
 }
 
 class DeviceState extends BaseState {
-  code: string | null;
+  code: any;
 
-  constructor(name: string, code: string) {
+  constructor(name: string, code: any) {
     super(name);
     this.type = 'Device';
     this.code = code;
@@ -232,9 +232,9 @@ class SupplyListState extends BaseState {
 
 class VitalSignState extends BaseState {
   vitalSign: any;
-  unit: any;
+  unit: string | null;
 
-  constructor(name: string, vitalSign: any, unit: any) {
+  constructor(name: string, vitalSign: any, unit: string | null) {
     super(name);
     this.type = 'VitalSign';
     this.vitalSign = vitalSign;
