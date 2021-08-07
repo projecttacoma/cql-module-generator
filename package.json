@@ -7,8 +7,7 @@
     "build/*"
   ],
   "dependencies": {
-    "commander": "^8.1.0",
-    "commander-ts": "^0.1.5"
+    "commander": "^8.1.0"
   },
   "devDependencies": {
     "@types/node": "^14.17.7",
