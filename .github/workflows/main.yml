@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     env:
-      REPO: https://github.com/projecttacoma/fqm-execution
-      REMOTE_EXCLUDES_URL: https://raw.githubusercontent.com/projecttacoma/fqm-execution/master/.github/gitleaks.toml
+      REPO: https://github.com/projecttacoma/cql-module-generator
+      REMOTE_EXCLUDES_URL: https://raw.githubusercontent.com/projecttacoma/cql-module-generator/master/.github/gitleaks.toml
       GITLEAKS_VERSION: v4.3.0
     steps:
       - name: Execute Gitleaks
