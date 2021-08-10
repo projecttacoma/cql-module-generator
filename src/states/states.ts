@@ -1,4 +1,4 @@
-class BaseState {
+export class BaseState {
   name: string;
   remarks: any;
   type: string;
@@ -17,14 +17,14 @@ class BaseState {
   }
 }
 
-class InitialState extends BaseState {
+export class InitialState extends BaseState {
   constructor(name: string) {
     super(name);
     this.type = 'Initial';
   }
 }
 
-class EncounterState extends BaseState {
+export class EncounterState extends BaseState {
   codes: any;
   encounterClass: string | null;
 
@@ -44,14 +44,14 @@ class EncounterState extends BaseState {
   }
 }
 
-class EncounterEndState extends BaseState {
+export class EncounterEndState extends BaseState {
   constructor(name: string) {
     super(name);
     this.type = 'EncounterEnd';
   }
 }
 
-class ConditionOnsetState extends BaseState {
+export class ConditionOnsetState extends BaseState {
   targetEncounter: string | null;
   codes: any;
 
@@ -71,13 +71,13 @@ class ConditionOnsetState extends BaseState {
   }
 }
 
-class ConditionEndState extends BaseState {
+export class ConditionEndState extends BaseState {
   constructor(name: string) {
     super(name);
     this.type = 'ConditionEnd';
   }
 }
-class AllergyOnsetState extends BaseState {
+export class AllergyOnsetState extends BaseState {
   codes: any;
   targetEncounter: string | null;
 
@@ -97,14 +97,14 @@ class AllergyOnsetState extends BaseState {
   }
 }
 
-class AllergyEndState extends BaseState {
+export class AllergyEndState extends BaseState {
   constructor(name: string) {
     super(name);
     this.type = 'AllergyEnd';
   }
 }
 
-class MedicationOrderState extends BaseState {
+export class MedicationOrderState extends BaseState {
   codes: any;
   constructor(name: string, codes: any) {
     super(name);
@@ -120,14 +120,14 @@ class MedicationOrderState extends BaseState {
   }
 }
 
-class MedicationEndState extends BaseState {
+export class MedicationEndState extends BaseState {
   constructor(name: string) {
     super(name);
     this.type = 'MedicationEnd';
   }
 }
 
-class CarePlanStartState extends BaseState {
+export class CarePlanStartState extends BaseState {
   codes: any;
   constructor(name: string, codes: any) {
     super(name);
@@ -143,14 +143,14 @@ class CarePlanStartState extends BaseState {
   }
 }
 
-class CarePlanEndState extends BaseState {
+export class CarePlanEndState extends BaseState {
   constructor(name: string) {
     super(name);
     this.type = 'CarePlanEnd';
   }
 }
 
-class ProcedureState extends BaseState {
+export class ProcedureState extends BaseState {
   codes: any;
   duration: any;
   constructor(name: string, codes: any, duration = undefined) {
@@ -169,7 +169,7 @@ class ProcedureState extends BaseState {
   }
 }
 
-class ImagingStudyState extends BaseState {
+export class ImagingStudyState extends BaseState {
   series: any;
   procedureCode: string | null;
 
@@ -189,7 +189,7 @@ class ImagingStudyState extends BaseState {
   }
 }
 
-class DeviceState extends BaseState {
+export class DeviceState extends BaseState {
   code: any;
 
   constructor(name: string, code: any) {
@@ -206,14 +206,14 @@ class DeviceState extends BaseState {
   }
 }
 
-class DeviceEndState extends BaseState {
+export class DeviceEndState extends BaseState {
   constructor(name: string) {
     super(name);
     this.type = 'DeviceEnd';
   }
 }
 
-class SupplyListState extends BaseState {
+export class SupplyListState extends BaseState {
   supplies: any;
 
   constructor(name: string, supplies: any) {
@@ -230,7 +230,7 @@ class SupplyListState extends BaseState {
   }
 }
 
-class VitalSignState extends BaseState {
+export class VitalSignState extends BaseState {
   vitalSign: any;
   unit: string | null;
 
@@ -250,7 +250,7 @@ class VitalSignState extends BaseState {
   }
 }
 
-class ObservationState extends BaseState {
+export class ObservationState extends BaseState {
   category: string | null;
   unit: string | null;
   codes: any;
@@ -276,7 +276,7 @@ class ObservationState extends BaseState {
   }
 }
 
-class MultiObservationState extends BaseState {
+export class MultiObservationState extends BaseState {
   category: string | null;
   numberOfObservations: number | null;
   codes: any;
@@ -299,7 +299,7 @@ class MultiObservationState extends BaseState {
   }
 }
 
-class DiagnosticReportState extends BaseState {
+export class DiagnosticReportState extends BaseState {
   numberOfObservations: number | null;
   codes: any;
 
@@ -319,7 +319,7 @@ class DiagnosticReportState extends BaseState {
   }
 }
 
-class SymptomState extends BaseState {
+export class SymptomState extends BaseState {
   symptom: any;
   cause: any;
   probability: any;
@@ -341,41 +341,15 @@ class SymptomState extends BaseState {
     };
   }
 }
-class DeathState extends BaseState {
+export class DeathState extends BaseState {
   constructor(name: string) {
     super(name);
     this.type = 'Death';
   }
 }
-class TerminalState extends BaseState {
+export class TerminalState extends BaseState {
   constructor(name: string) {
     super(name);
     this.type = 'Terminal';
   }
 }
-
-module.exports = {
-  InitialState,
-  EncounterState,
-  EncounterEndState,
-  ConditionOnsetState,
-  ConditionEndState,
-  AllergyOnsetState,
-  AllergyEndState,
-  MedicationOrderState,
-  MedicationEndState,
-  CarePlanStartState,
-  CarePlanEndState,
-  ProcedureState,
-  ImagingStudyState,
-  DeviceState,
-  DeviceEndState,
-  SupplyListState,
-  VitalSignState,
-  ObservationState,
-  MultiObservationState,
-  DiagnosticReportState,
-  SymptomState,
-  DeathState,
-  TerminalState
-};
