@@ -64,7 +64,7 @@ export class ConditionOnsetState extends BaseState {
     this.codes = codes;
   }
 
-  toJSON() {
+  toJSON(): any {
     return {
       ...super.toJSON(),
       target_encounter: this.targetEncounter,
@@ -90,7 +90,7 @@ export class AllergyOnsetState extends BaseState {
     this.codes = codes;
   }
 
-  toJSON() {
+  toJSON(): any {
     return {
       ...super.toJSON(),
       target_encounter: this.targetEncounter,
@@ -114,7 +114,7 @@ export class MedicationOrderState extends BaseState {
     this.codes = codes;
   }
 
-  toJSON() {
+  toJSON(): any {
     return {
       ...super.toJSON(),
       codes: this.codes
@@ -137,7 +137,7 @@ export class CarePlanStartState extends BaseState {
     this.codes = codes;
   }
 
-  toJSON() {
+  toJSON(): any {
     return {
       ...super.toJSON(),
       codes: this.codes
@@ -162,7 +162,7 @@ export class ProcedureState extends BaseState {
     this.duration = duration;
   }
 
-  toJSON() {
+  toJSON(): any {
     return {
       ...super.toJSON(),
       codes: this.codes,
@@ -182,7 +182,7 @@ export class ImagingStudyState extends BaseState {
     this.series = series;
   }
 
-  toJSON() {
+  toJSON(): any {
     return {
       ...super.toJSON(),
       procedure_code: this.procedureCode,
@@ -200,7 +200,7 @@ export class DeviceState extends BaseState {
     this.code = code;
   }
 
-  toJSON() {
+  toJSON(): any {
     return {
       ...super.toJSON(),
       code: this.code
@@ -224,7 +224,7 @@ export class SupplyListState extends BaseState {
     this.supplies = supplies;
   }
 
-  toJSON() {
+  toJSON(): any {
     return {
       ...super.toJSON(),
       supplies: this.supplies
@@ -243,7 +243,7 @@ export class VitalSignState extends BaseState {
     this.unit = unit;
   }
 
-  toJSON() {
+  toJSON(): any {
     return {
       ...super.toJSON(),
       vital_sign: this.vitalSign,
@@ -265,7 +265,7 @@ export class ObservationState extends BaseState {
     this.codes = codes;
   }
 
-  toJSON() {
+  toJSON(): any {
     return {
       ...super.toJSON(),
       category: this.category,
@@ -291,7 +291,7 @@ export class MultiObservationState extends BaseState {
     this.codes = codes;
   }
 
-  toJSON() {
+  toJSON(): any {
     return {
       ...super.toJSON(),
       category: this.category,
@@ -312,7 +312,7 @@ export class DiagnosticReportState extends BaseState {
     this.codes = codes;
   }
 
-  toJSON() {
+  toJSON(): any {
     return {
       ...super.toJSON(),
       number_of_observations: this.numberOfObservations,
@@ -334,7 +334,7 @@ export class SymptomState extends BaseState {
     this.probability = probability;
   }
 
-  toJSON() {
+  toJSON(): any {
     return {
       ...super.toJSON(),
       symptom: this.symptom,
