@@ -1,7 +1,7 @@
 import { Command } from 'commander';
 import fs from 'fs';
 import { R4 } from '@ahryman40k/ts-fhir-types';
-import { checkBundles } from './MeasureBundleHelpers';
+import { getRetrieves } from './RetrievesHelper';
 
 const program = new Command();
 
@@ -17,4 +17,4 @@ function parseBundle(): R4.IBundle {
 
 const measureBundle = parseBundle();
 
-checkBundles(measureBundle);
+getRetrieves(measureBundle);
