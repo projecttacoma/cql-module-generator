@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 export class BaseState {
   name: string;
   remarks: any;
@@ -9,7 +11,7 @@ export class BaseState {
     this.type = 'Base';
   }
 
-  toJSON() {
+  toJSON(): any {
     return {
       type: this.type,
       direct_transition: this.name
@@ -35,7 +37,7 @@ export class EncounterState extends BaseState {
     this.codes = codes;
   }
 
-  toJSON() {
+  toJSON(): any {
     return {
       ...super.toJSON(),
       codes: this.codes,
