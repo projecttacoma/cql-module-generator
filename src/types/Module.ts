@@ -1,5 +1,5 @@
 
-import type * as BaseState from './src/states/states';
+import type * as BaseState from '../states/states';
 
 export type Module = {
   name: string,

@@ -2,54 +2,63 @@
 import type { Conditional } from './conditional';
 
 export type DirectTransition = {
-  to: string,
-  type: 'Direct'
+  to: string;
+  type: 'Direct';
 };
 
 export type DistributedTransition = {
-  type: 'Distributed',
+  type: 'Distributed';
   transition: [
     {
-      distribution: {
-        attribute: string,
-        default: number
-      } | number,
-      to: string
+      distribution:
+        | {
+            attribute: string;
+            default: number;
+          }
+        | number;
+      to: string;
     }
-  ]
+  ];
 };
 
 export type ConditionalTransition = {
-  type: 'Conditional',
+  type: 'Conditional';
   transition: [
     {
-      condition?: Conditional,
-      to: string
+      condition?: Conditional;
+      to: string;
     }
-  ]
+  ];
 };
 
 export type ComplexTransition = {
-  type: 'Complex',
-  transition: [{
-    condition ?: Conditional,
-    distributions ?: DistributedTransition,
-    transition ?: DirectTransition
-  }]
+  type: 'Complex';
+  transition: [
+    {
+      condition?: Conditional;
+      distributions?: DistributedTransition;
+      transition?: DirectTransition;
+    }
+  ];
 };
 
 export type TableTransition = {
-  type: 'Table',
-  lookup_table_name_ModuleBuilder: string,
-  viewTable: Boolean,
-  lookuptable: string,
+  type: 'Table';
+  lookup_table_name_ModuleBuilder: string;
+  viewTable: Boolean;
+  lookuptable: string;
   transition: [
     {
-      default_probability: number,
-      transition: string,
-      lookup_table_name: string,
+      default_probability: number;
+      transition: string;
+      lookup_table_name: string;
     }
-  ]
+  ];
 };
 
-export type Transition = DirectTransition | DistributedTransition | ConditionalTransition | ComplexTransition | TableTransition;
+export type Transition =
+  | DirectTransition
+  | DistributedTransition
+  | ConditionalTransition
+  | ComplexTransition
+  | TableTransition;
