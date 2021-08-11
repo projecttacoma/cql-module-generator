@@ -1,5 +1,5 @@
 import { R4 } from '@ahryman40k/ts-fhir-types';
-import { MeasureBundleHelpers, CalculatorTypes, RetrievesFinder } from 'fqm-execution';
+import { MeasureBundleHelpers, CalculatorTypes, ELMTypes, RetrievesFinder } from 'fqm-execution';
 
 /**
  * Get all retrieves used in the library
@@ -7,7 +7,10 @@ import { MeasureBundleHelpers, CalculatorTypes, RetrievesFinder } from 'fqm-exec
  * @param measureBundle Bundle with a MeasureResource and all necessary data for execution.
  * @returns DataTypeQuery array of all retrieves output
  */
-export function getRetrieves(measureBundle: R4.IBundle): CalculatorTypes.DataTypeQuery[] {
+export function getRetrieves(measureBundle: R4.IBundle): {
+  libName: ELMTypes.ELMIdentifier;
+  allRetrieves: CalculatorTypes.DataTypeQuery[];
+} {
   // Extract the library ELM, and the id of the root library, from the measure bundle
   const { rootLibIdentifier, elmJSONs } = MeasureBundleHelpers.extractLibrariesFromBundle(measureBundle);
   // Get reference to root library
@@ -27,5 +30,5 @@ export function getRetrieves(measureBundle: R4.IBundle): CalculatorTypes.DataTyp
       return [];
     }
   });
-  return allRetrieves;
+  return { libName: rootLibIdentifier, allRetrieves };
 }

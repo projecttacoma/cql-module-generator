@@ -2,6 +2,7 @@ import { Command } from 'commander';
 import fs from 'fs';
 import { R4 } from '@ahryman40k/ts-fhir-types';
 import { getRetrieves } from './RetrievesHelper';
+import { exportModule } from './ExportModule';
 
 const program = new Command();
 
@@ -17,4 +18,7 @@ function parseBundle(): R4.IBundle {
 
 const measureBundle = parseBundle();
 
-getRetrieves(measureBundle);
+const { libName, allRetrieves } = getRetrieves(measureBundle);
+console.log(JSON.stringify(allRetrieves, null, 4));
+const moduleJSON = exportModule(libName.id, allRetrieves);
+fs.writeFileSync(`${moduleJSON.name}.json`, JSON.stringify(moduleJSON));
