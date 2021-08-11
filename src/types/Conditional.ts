@@ -20,7 +20,7 @@ export type DateConditional = {
   operator: '==' | '!=' | '<' | '<=' | '>' | '>=';
   year?: number;
   month?: number;
-  date?: DateInput;
+  date?: DateConstructor;
 };
 
 export type SocioeconomicStatusConditional = {
@@ -42,10 +42,10 @@ export type SymptomConditional = {
 
 export type ObservationConditional = {
   condition_type: 'Observation';
-  codes: Code[] | string;
+  codes: code[] | string;
   operator: '==' | '!=' | '<' | '<=' | '>' | '>=' | 'is nil' | 'is not nil';
   value?: number;
-  value_code?: Code;
+  value_code?: code;
 };
 
 export type VitalSignConditional = {
@@ -57,22 +57,22 @@ export type VitalSignConditional = {
 
 export type ActiveConditionConditional = {
   condition_type: 'Active Condition';
-  codes: Code[] | string;
+  codes: code[] | string;
 };
 
 export type ActiveAllergyConditional = {
   condition_type: 'Active Allergy';
-  codes: Code[] | string;
+  codes: code[] | string;
 };
 
 export type ActiveMedicationConditional = {
   condition_type: 'Active Medication';
-  codes: Code[] | string;
+  codes: code[] | string;
 };
 
 export type ActiveCarePlanConditional = {
   condition_type: 'Active CarePlan';
-  codes: Code[] | string;
+  codes: code[] | string;
 };
 
 export type PriorStateConditional = {
