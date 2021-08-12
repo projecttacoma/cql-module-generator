@@ -28,10 +28,10 @@ export class InitialState extends BaseState {
 }
 
 export class EncounterState extends BaseState {
-  codes: code;
+  codes: code[];
   encounterClass: string | null;
 
-  constructor(name: string, encounterClass: string | null, codes: code) {
+  constructor(name: string, encounterClass: string | null, codes: code[]) {
     super(name);
     this.type = 'Encounter';
     this.encounterClass = encounterClass;
@@ -58,7 +58,7 @@ export class ConditionOnsetState extends BaseState {
   targetEncounter: string | null;
   codes: any;
 
-  constructor(name: string, targetEncounter: string | null, codes: code) {
+  constructor(name: string, targetEncounter: string | null, codes: code[]) {
     super(name);
     this.type = 'ConditionOnset';
     this.targetEncounter = targetEncounter;
@@ -81,10 +81,10 @@ export class ConditionEndState extends BaseState {
   }
 }
 export class AllergyOnsetState extends BaseState {
-  codes: code;
+  codes: code[];
   targetEncounter: string | null;
 
-  constructor(name: string, targetEncounter: string | null, codes: code) {
+  constructor(name: string, targetEncounter: string | null, codes: code[]) {
     super(name);
     this.type = 'AllergyOnset';
     this.targetEncounter = targetEncounter;
@@ -108,8 +108,8 @@ export class AllergyEndState extends BaseState {
 }
 
 export class MedicationOrderState extends BaseState {
-  codes: code;
-  constructor(name: string, codes: code) {
+  codes: code[];
+  constructor(name: string, codes: code[]) {
     super(name);
     this.type = 'MedicationOrder';
     this.codes = codes;
@@ -131,8 +131,8 @@ export class MedicationEndState extends BaseState {
 }
 
 export class CarePlanStartState extends BaseState {
-  codes: code;
-  constructor(name: string, codes: code) {
+  codes: code[];
+  constructor(name: string, codes: code[]) {
     super(name);
     this.type = 'CarePlanStart';
     this.codes = codes;
@@ -154,9 +154,9 @@ export class CarePlanEndState extends BaseState {
 }
 
 export class ProcedureState extends BaseState {
-  codes: code;
+  codes: code[];
   duration: any;
-  constructor(name: string, codes: code, duration = undefined) {
+  constructor(name: string, codes: code[], duration = undefined) {
     super(name);
     this.type = 'Procedure';
     this.codes = codes;
@@ -256,9 +256,9 @@ export class VitalSignState extends BaseState {
 export class ObservationState extends BaseState {
   category: string | null;
   unit: string | null;
-  codes: code;
+  codes: code[];
 
-  constructor(name: string, category: string | null, unit: string | null, codes: code) {
+  constructor(name: string, category: string | null, unit: string | null, codes: code[]) {
     super(name);
     this.type = 'Observation';
     this.category = category;
@@ -304,9 +304,9 @@ export class MultiObservationState extends BaseState {
 
 export class DiagnosticReportState extends BaseState {
   numberOfObservations: number | null;
-  codes: code;
+  codes: code[];
 
-  constructor(name: string, numberOfObservations: number | null, codes: code) {
+  constructor(name: string, numberOfObservations: number | null, codes: code[]) {
     super(name);
     this.type = 'DiagnosticReport';
     this.numberOfObservations = numberOfObservations;
