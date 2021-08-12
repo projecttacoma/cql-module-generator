@@ -1,7 +1,7 @@
-import type { code } from './code';
+import type { Code } from './code';
 export interface Goal {
   observation?: {
-    codes: code[];
+    codes: Code[];
     operator: '==' | '!=' | '<' | '<=' | '>' | '>=' | 'is nil' | 'is not nil';
     value: number;
   };
@@ -11,15 +11,15 @@ export interface Goal {
 
 export interface Instance {
   title: string;
-  sop_class: code;
+  sop_class: Code;
 }
 
 export interface Series {
-  body_site: code;
-  modality: code;
+  body_site: Code;
+  modality: Code;
   instances: Instance[];
 }
 export interface Supply {
   quantity: number;
-  item: code;
+  item: Code;
 }
