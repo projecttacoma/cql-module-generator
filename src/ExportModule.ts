@@ -25,6 +25,7 @@ export function exportModule(libName: string, dataTypes: CalculatorTypes.DataTyp
   };
 
   dataTypes.forEach((object, i) => {
+    console.log(JSON.stringify(object, null, 4));
     const stateName = `${object.dataType}_${i}`;
     if (object.dataType !== null && factory(object.dataType, stateName) !== null) {
       const StateClass = factory(object.dataType, stateName);
