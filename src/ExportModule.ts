@@ -1,15 +1,16 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { CalculatorTypes } from 'fqm-execution';
 import * as states from './states/states';
 import { factory } from './states/factory';
-import { ELMIdentifier } from 'fqm-execution/build/types/ELMTypes';
 
 interface moduleJSONType {
   name: string;
   remarks: string[];
   states: {
-    Initial: any;
-    Terminal: any;
-    [key: string]: any;
+    Initial: states.InitialState;
+    Terminal: states.TerminalState;
+    [key: string]: states.BaseState;
   };
 }
 

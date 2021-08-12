@@ -1,4 +1,7 @@
+import { CalculatorTypes } from 'fqm-execution';
 import { exportModule } from '../src/ExportModule';
+
+const EMPTY_DATA_TYPE = [] as CalculatorTypes.DataTypeQuery[];
 
 const SINGULAR_DATA_TYPE = [
   {
@@ -35,6 +38,21 @@ const MULTIPLE_DATA_TYPES = [
     path: 'type'
   }
 ];
+
+const EXPECTED_EMPTY_DATA_TYPE = {
+  name: 'Empty',
+  remarks: [],
+  states: {
+    Initial: {
+      direct_transition: 'Initial',
+      type: 'Initial'
+    },
+    Terminal: {
+      direct_transition: 'Terminal',
+      type: 'Terminal'
+    }
+  }
+};
 
 const EXPECTED_SINGULAR_DATA_TYPE = {
   name: 'Test',
@@ -85,6 +103,9 @@ const EXPECTED_MULTIPLE_DATA_TYPES = {
 };
 
 describe('Export Module Tests', () => {
+  test('Emtpy Data Type', () => {
+    expect(exportModule('Empty', EMPTY_DATA_TYPE)).toEqual(EXPECTED_EMPTY_DATA_TYPE);
+  });
   test('Singular Data Type', () => {
     expect(exportModule('Test', SINGULAR_DATA_TYPE)).toEqual(EXPECTED_SINGULAR_DATA_TYPE);
   });
