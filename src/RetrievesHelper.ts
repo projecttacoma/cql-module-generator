@@ -5,7 +5,7 @@ import { MeasureBundleHelpers, CalculatorTypes, ELMTypes, RetrievesFinder } from
  * Get all retrieves used in the library
  *
  * @param measureBundle Bundle with a MeasureResource and all necessary data for execution.
- * @returns DataTypeQuery array of all retrieves output
+ * @returns an object consisting of a DataTypeQuery array of all retrieves output and a library Name of the passed in measure bundle
  */
 export function getRetrieves(measureBundle: R4.IBundle): {
   libName: ELMTypes.ELMIdentifier;

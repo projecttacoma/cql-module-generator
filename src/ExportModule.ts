@@ -13,8 +13,14 @@ interface moduleJSONType {
     [key: string]: states.BaseState;
   };
 }
-
-export function exportModule(libName: string, dataTypes: CalculatorTypes.DataTypeQuery[]): any {
+/**
+ * Converts an array of DataTypeQueries into a JSON object which can be copied into
+ * the Synthea Module Builder to create a set of corresponding states
+ * @param libName A string signifying the library used to create the dataType array
+ * @param dataTypes An array of DataTypeQueries which will be converted into Synthea states
+ * @returns moduleJSONType object consisting of the toJSON functions from the states created using the dataTypes arg.
+ */
+export function exportModule(libName: string, dataTypes: CalculatorTypes.DataTypeQuery[]): moduleJSONType {
   const moduleJSON: moduleJSONType = {
     name: libName,
     remarks: [],
@@ -25,7 +31,6 @@ export function exportModule(libName: string, dataTypes: CalculatorTypes.DataTyp
   };
 
   dataTypes.forEach((object, i) => {
-    console.log(JSON.stringify(object, null, 4));
     const stateName = `${object.dataType}_${i}`;
     if (object.dataType !== null && factory(object.dataType, stateName) !== null) {
       const StateClass = factory(object.dataType, stateName);
