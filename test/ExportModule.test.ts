@@ -16,6 +16,18 @@ const SINGULAR_DATA_TYPE = [
   }
 ];
 
+const SINGULAR_DATA_TYPE_WITHOUT_VALUESET = [
+  {
+    dataType: 'Encounter',
+    queryLocalId: '33',
+    retrieveLocalId: '17',
+    retrieveLibraryName: 'AdultOutpatientEncounters',
+    queryLibraryName: 'AdultOutpatientEncounters',
+    expressionStack: [],
+    path: 'type'
+  }
+];
+
 const MULTIPLE_DATA_TYPES = [
   {
     dataType: 'Encounter',
@@ -67,6 +79,34 @@ const EXPECTED_SINGULAR_DATA_TYPE = {
       type: 'Terminal'
     },
     Encounter_0: {
+      codes: [
+        {
+          system: '',
+          code: '',
+          display: '',
+          value_set: 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1025'
+        }
+      ],
+      encounter_class: null,
+      type: 'Encounter',
+      direct_transition: 'Encounter_0'
+    }
+  }
+};
+
+const EXPECTED_SINGULAR_DATA_TYPE_WITHOUT_VALUESET = {
+  name: 'Test',
+  remarks: [],
+  states: {
+    Initial: {
+      direct_transition: 'Initial',
+      type: 'Initial'
+    },
+    Terminal: {
+      direct_transition: 'Terminal',
+      type: 'Terminal'
+    },
+    Encounter_0: {
       codes: [],
       encounter_class: null,
       type: 'Encounter',
@@ -88,13 +128,27 @@ const EXPECTED_MULTIPLE_DATA_TYPES = {
       type: 'Terminal'
     },
     Encounter_0: {
-      codes: [],
+      codes: [
+        {
+          system: '',
+          code: '',
+          display: '',
+          value_set: 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1025'
+        }
+      ],
       encounter_class: null,
       type: 'Encounter',
       direct_transition: 'Encounter_0'
     },
     Procedure_1: {
-      codes: [],
+      codes: [
+        {
+          system: '',
+          code: '',
+          display: '',
+          value_set: 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1025'
+        }
+      ],
       duration: undefined,
       type: 'Procedure',
       direct_transition: 'Procedure_1'
@@ -108,6 +162,11 @@ describe('Export Module Tests', () => {
   });
   test('Singular Data Type', () => {
     expect(exportModule('Test', SINGULAR_DATA_TYPE)).toEqual(EXPECTED_SINGULAR_DATA_TYPE);
+  });
+  test('Singular Data Type Without Valueset', () => {
+    expect(exportModule('Test', SINGULAR_DATA_TYPE_WITHOUT_VALUESET)).toEqual(
+      EXPECTED_SINGULAR_DATA_TYPE_WITHOUT_VALUESET
+    );
   });
   test('Multiple Data Types', () => {
     expect(exportModule('Test', MULTIPLE_DATA_TYPES)).toEqual(EXPECTED_MULTIPLE_DATA_TYPES);

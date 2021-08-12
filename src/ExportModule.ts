@@ -10,7 +10,7 @@ interface moduleJSONType {
   states: {
     Initial: states.InitialState;
     Terminal: states.TerminalState;
-    [key: string]: states.BaseState;
+    [key: string]: states.AnyState;
   };
 }
 /**
@@ -32,10 +32,19 @@ export function exportModule(libName: string, dataTypes: CalculatorTypes.DataTyp
 
   dataTypes.forEach((object, i) => {
     const stateName = `${object.dataType}_${i}`;
-    if (object.dataType !== null && factory(object.dataType, stateName) !== null) {
-      const StateClass = factory(object.dataType, stateName);
 
-      StateClass && (moduleJSON.states[stateName] = StateClass.toJSON());
+    if (object.dataType !== null && factory(object.dataType, stateName) !== null) {
+      const stateClass = factory(object.dataType, stateName);
+      if (object.valueSet !== undefined && stateClass && states.doesAcceptCodes(stateClass)) {
+        stateClass['codes'].push({
+          system: '',
+          code: '',
+          display: '',
+          value_set: object.valueSet
+        });
+      }
+
+      stateClass && (moduleJSON.states[stateName] = stateClass.toJSON());
     }
   });
 

@@ -20,4 +20,4 @@ const measureBundle = parseBundle();
 
 const { libName, allRetrieves } = getRetrieves(measureBundle);
 const moduleJSON = exportModule(libName.id, allRetrieves);
-fs.writeFileSync(`${moduleJSON.name}.json`, JSON.stringify(moduleJSON));
+fs.writeFileSync(`${moduleJSON.name}.json`, JSON.stringify(moduleJSON, null, 4));

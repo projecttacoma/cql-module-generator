@@ -356,3 +356,47 @@ export class TerminalState extends BaseState {
     this.type = 'Terminal';
   }
 }
+
+export type AnyState =
+  | DeathState
+  | SymptomState
+  | DiagnosticReportState
+  | MultiObservationState
+  | ObservationState
+  | VitalSignState
+  | SupplyListState
+  | BaseState
+  | EncounterEndState
+  | EncounterState
+  | ConditionEndState
+  | ConditionOnsetState
+  | AllergyEndState
+  | AllergyOnsetState
+  | MedicationEndState
+  | MedicationOrderState
+  | CarePlanEndState
+  | CarePlanStartState
+  | ProcedureState
+  | ImagingStudyState
+  | DeviceEndState
+  | DeviceState
+  | TerminalState
+  | InitialState;
+
+export type hasCodes =
+  | EncounterState
+  | ConditionOnsetState
+  | AllergyOnsetState
+  | MedicationOrderState
+  | CarePlanStartState
+  | ProcedureState
+  | ObservationState
+  | MultiObservationState
+  | DiagnosticReportState;
+
+export const doesAcceptCodes = (tbd: AnyState): tbd is hasCodes => {
+  if ((tbd as hasCodes).codes) {
+    return true;
+  }
+  return false;
+};
