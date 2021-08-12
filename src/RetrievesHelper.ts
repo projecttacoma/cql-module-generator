@@ -20,7 +20,7 @@ export function getRetrieves(measureBundle: R4.IBundle): CalculatorTypes.DataTyp
 
   // Get the retrieves for every statement in the root library
   const allRetrieves = rootLib.library.statements.def.flatMap(statement => {
-    if (statement.expression && statement.name != 'Patient') {
+    if (statement.expression && statement.name !== 'Patient') {
       const retrieves = RetrievesFinder.findRetrieves(rootLib, elmJSONs, statement.expression);
       return retrieves.results;
     } else {
