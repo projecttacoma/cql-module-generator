@@ -15,8 +15,6 @@ interface moduleJSONType {
 }
 
 export function exportModule(libName: string, dataTypes: CalculatorTypes.DataTypeQuery[]): any {
-  //const dataTypes = loadData(ELMFiles);
-  //const valueSets = loadValueSet(ELMFiles);
   const moduleJSON: moduleJSONType = {
     name: libName,
     remarks: [],
@@ -29,7 +27,6 @@ export function exportModule(libName: string, dataTypes: CalculatorTypes.DataTyp
   dataTypes.forEach((object, i) => {
     const stateName = `${object.dataType}_${i}`;
     if (object.dataType !== null && factory(object.dataType, stateName) !== null) {
-      //console.log(`adding state of type: ${object.dataType}`);
       const StateClass = factory(object.dataType, stateName);
 
       StateClass && (moduleJSON.states[stateName] = StateClass.toJSON());
