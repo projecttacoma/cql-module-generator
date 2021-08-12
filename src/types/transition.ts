@@ -1,4 +1,3 @@
-// @flow
 import type { Conditional } from './conditional';
 
 export type DirectTransition = {

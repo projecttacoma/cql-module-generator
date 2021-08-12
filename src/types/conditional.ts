@@ -1,6 +1,4 @@
-// @flow
-
-import type { code } from './code';
+import type { Code } from './code';
 import type { UnitOfTime, UnitOfAge } from './units';
 
 export type GenderConditional = {
@@ -42,10 +40,10 @@ export type SymptomConditional = {
 
 export type ObservationConditional = {
   condition_type: 'Observation';
-  codes: code[] | string;
+  codes: Code[] | string;
   operator: '==' | '!=' | '<' | '<=' | '>' | '>=' | 'is nil' | 'is not nil';
   value?: number;
-  value_code?: code;
+  value_code?: Code;
 };
 
 export type VitalSignConditional = {
@@ -57,22 +55,22 @@ export type VitalSignConditional = {
 
 export type ActiveConditionConditional = {
   condition_type: 'Active Condition';
-  codes: code[] | string;
+  codes: Code[] | string;
 };
 
 export type ActiveAllergyConditional = {
   condition_type: 'Active Allergy';
-  codes: code[] | string;
+  codes: Code[] | string;
 };
 
 export type ActiveMedicationConditional = {
   condition_type: 'Active Medication';
-  codes: code[] | string;
+  codes: Code[] | string;
 };
 
 export type ActiveCarePlanConditional = {
   condition_type: 'Active CarePlan';
-  codes: code[] | string;
+  codes: Code[] | string;
 };
 
 export type PriorStateConditional = {

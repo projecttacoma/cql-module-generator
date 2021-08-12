@@ -1,5 +1,5 @@
 // need updated ts states file from other task
-import { code } from '../types/code';
+
 import * as states from './states';
 
 /**
