@@ -394,7 +394,7 @@ export type hasCodes =
   | MultiObservationState
   | DiagnosticReportState;
 
-export const doesAcceptCodes = (tbd: AnyState): tbd is hasCodes => {
+export const doesHaveCodes = (tbd: AnyState): tbd is hasCodes => {
   if ((tbd as hasCodes).codes) {
     return true;
   }
