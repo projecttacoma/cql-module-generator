@@ -7,7 +7,9 @@
     "build/*"
   ],
   "dependencies": {
-    "commander": "^8.1.0"
+    "@ahryman40k/ts-fhir-types": "^4.0.36",
+    "commander": "^8.1.0",
+    "fqm-execution": "^0.6.1"
   },
   "devDependencies": {
     "@types/jest": "^26.0.5",
