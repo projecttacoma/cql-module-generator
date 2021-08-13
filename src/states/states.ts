@@ -383,7 +383,7 @@ export type AnyState =
   | TerminalState
   | InitialState;
 
-export type hasCodes =
+export type HasCodes =
   | EncounterState
   | ConditionOnsetState
   | AllergyOnsetState
@@ -394,8 +394,8 @@ export type hasCodes =
   | MultiObservationState
   | DiagnosticReportState;
 
-export const doesHaveCodes = (tbd: AnyState): tbd is hasCodes => {
-  if ((tbd as hasCodes).codes) {
+export const doesHaveCodes = (tbd: AnyState): tbd is HasCodes => {
+  if ((tbd as HasCodes).codes) {
     return true;
   }
   return false;
