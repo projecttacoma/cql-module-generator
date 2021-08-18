@@ -1,4 +1,3 @@
-import { R4 } from '@ahryman40k/ts-fhir-types';
 import { MeasureBundleHelpers, CalculatorTypes, ELMTypes, RetrievesFinder } from 'fqm-execution';
 
 /**
@@ -7,7 +6,7 @@ import { MeasureBundleHelpers, CalculatorTypes, ELMTypes, RetrievesFinder } from
  * @param measureBundle Bundle with a MeasureResource and all necessary data for execution.
  * @returns an object consisting of a DataTypeQuery array of all retrieves output and a library Name of the passed in measure bundle
  */
-export function getRetrieves(measureBundle: R4.IBundle): {
+export function getRetrieves(measureBundle: fhir4.Bundle): {
   libName: ELMTypes.ELMIdentifier;
   allRetrieves: CalculatorTypes.DataTypeQuery[];
 } {
