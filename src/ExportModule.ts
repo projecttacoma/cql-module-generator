@@ -36,7 +36,7 @@ export function exportModule(libName: string, dataTypes: CalculatorTypes.DataTyp
     if (object.dataType !== null && factory(object.dataType, stateName) !== null) {
       const stateClass = factory(object.dataType, stateName);
       if (object.valueSet !== undefined && stateClass && states.doesHaveCodes(stateClass)) {
-        stateClass['codes'].push({
+        stateClass.codes.push({
           system: '',
           code: '',
           display: '',
