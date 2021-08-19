@@ -8,7 +8,7 @@
   ],
   "dependencies": {
     "commander": "^8.1.0",
-    "fqm-execution": "^0.7.0"
+    "fqm-execution": "^0.8.0"
   },
   "devDependencies": {
     "@types/fhir": "0.0.34",
