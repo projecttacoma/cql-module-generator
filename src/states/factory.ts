@@ -9,7 +9,7 @@ import * as states from './states';
  * @param name The name from the object returned by getDataType.ts
  * @returns Instance of the state class from the data type with corresponding name
  */
-export function factory(dataType: string, name: string): states.BaseState | null {
+export function factory(dataType: string, name: string): states.AnyState | null {
   // don't worry about codes right now because the way we assemble the codes arg is going to change
   // all code args currently set to [] in each state class
   switch (dataType) {
