@@ -20,6 +20,30 @@ export class BaseState {
   }
 }
 
+/**
+ * A parent class for all states which have a codes attribute.
+ * Will be used for type checking to avoid ts errors
+ */
+export class StateWithCodes extends BaseState {
+  codes: Code[];
+
+  constructor(name: string, codes: Code[]) {
+    super(name);
+    this.codes = codes;
+  }
+
+  public get hasCodesField(): boolean {
+    return true;
+  }
+
+  toJSON(): any {
+    return {
+      ...super.toJSON(),
+      codes: this.codes
+    };
+  }
+}
+
 export class InitialState extends BaseState {
   constructor(name: string) {
     super(name);
@@ -27,21 +51,18 @@ export class InitialState extends BaseState {
   }
 }
 
-export class EncounterState extends BaseState {
-  codes: Code[];
+export class EncounterState extends StateWithCodes {
   encounterClass: string | null;
 
   constructor(name: string, encounterClass: string | null, codes: Code[]) {
-    super(name);
+    super(name, codes);
     this.type = 'Encounter';
     this.encounterClass = encounterClass;
-    this.codes = codes;
   }
 
   toJSON(): any {
     return {
       ...super.toJSON(),
-      codes: this.codes,
       encounter_class: this.encounterClass
     };
   }
@@ -54,22 +75,19 @@ export class EncounterEndState extends BaseState {
   }
 }
 
-export class ConditionOnsetState extends BaseState {
+export class ConditionOnsetState extends StateWithCodes {
   targetEncounter: string | null;
-  codes: any;
 
   constructor(name: string, targetEncounter: string | null, codes: Code[]) {
-    super(name);
+    super(name, codes);
     this.type = 'ConditionOnset';
     this.targetEncounter = targetEncounter;
-    this.codes = codes;
   }
 
   toJSON(): any {
     return {
       ...super.toJSON(),
-      target_encounter: this.targetEncounter,
-      codes: this.codes
+      target_encounter: this.targetEncounter
     };
   }
 }
@@ -80,22 +98,19 @@ export class ConditionEndState extends BaseState {
     this.type = 'ConditionEnd';
   }
 }
-export class AllergyOnsetState extends BaseState {
-  codes: Code[];
+export class AllergyOnsetState extends StateWithCodes {
   targetEncounter: string | null;
 
   constructor(name: string, targetEncounter: string | null, codes: Code[]) {
-    super(name);
+    super(name, codes);
     this.type = 'AllergyOnset';
     this.targetEncounter = targetEncounter;
-    this.codes = codes;
   }
 
   toJSON(): any {
     return {
       ...super.toJSON(),
-      target_encounter: this.targetEncounter,
-      codes: this.codes
+      target_encounter: this.targetEncounter
     };
   }
 }
@@ -107,18 +122,15 @@ export class AllergyEndState extends BaseState {
   }
 }
 
-export class MedicationOrderState extends BaseState {
-  codes: Code[];
+export class MedicationOrderState extends StateWithCodes {
   constructor(name: string, codes: Code[]) {
-    super(name);
+    super(name, codes);
     this.type = 'MedicationOrder';
-    this.codes = codes;
   }
 
   toJSON(): any {
     return {
-      ...super.toJSON(),
-      codes: this.codes
+      ...super.toJSON()
     };
   }
 }
@@ -130,19 +142,10 @@ export class MedicationEndState extends BaseState {
   }
 }
 
-export class CarePlanStartState extends BaseState {
-  codes: Code[];
+export class CarePlanStartState extends StateWithCodes {
   constructor(name: string, codes: Code[]) {
-    super(name);
+    super(name, codes);
     this.type = 'CarePlanStart';
-    this.codes = codes;
-  }
-
-  toJSON(): any {
-    return {
-      ...super.toJSON(),
-      codes: this.codes
-    };
   }
 }
 
@@ -153,20 +156,17 @@ export class CarePlanEndState extends BaseState {
   }
 }
 
-export class ProcedureState extends BaseState {
-  codes: Code[];
+export class ProcedureState extends StateWithCodes {
   duration: any;
   constructor(name: string, codes: Code[], duration = undefined) {
-    super(name);
+    super(name, codes);
     this.type = 'Procedure';
-    this.codes = codes;
     this.duration = duration;
   }
 
   toJSON(): any {
     return {
       ...super.toJSON(),
-      codes: this.codes,
       duration: this.duration
     };
   }
@@ -253,17 +253,15 @@ export class VitalSignState extends BaseState {
   }
 }
 
-export class ObservationState extends BaseState {
+export class ObservationState extends StateWithCodes {
   category: string | null;
   unit: string | null;
-  codes: Code[];
 
   constructor(name: string, category: string | null, unit: string | null, codes: Code[]) {
-    super(name);
+    super(name, codes);
     this.type = 'Observation';
     this.category = category;
     this.unit = unit;
-    this.codes = codes;
   }
 
   toJSON(): any {
@@ -271,7 +269,6 @@ export class ObservationState extends BaseState {
       ...super.toJSON(),
       category: this.category,
       unit: this.unit,
-      codes: this.codes,
       exact: {
         quantity: 1
       }
@@ -279,45 +276,39 @@ export class ObservationState extends BaseState {
   }
 }
 
-export class MultiObservationState extends BaseState {
+export class MultiObservationState extends StateWithCodes {
   category: string | null;
   numberOfObservations: number | null;
-  codes: Code[];
 
   constructor(name: string, category: string | null, numberOfObservations: number | null, codes: Code[]) {
-    super(name);
+    super(name, codes);
     this.type = 'MultiObservation';
     this.category = category;
     this.numberOfObservations = numberOfObservations;
-    this.codes = codes;
   }
 
   toJSON(): any {
     return {
       ...super.toJSON(),
       category: this.category,
-      number_of_observations: this.numberOfObservations,
-      codes: this.codes
+      number_of_observations: this.numberOfObservations
     };
   }
 }
 
-export class DiagnosticReportState extends BaseState {
+export class DiagnosticReportState extends StateWithCodes {
   numberOfObservations: number | null;
-  codes: Code[];
 
   constructor(name: string, numberOfObservations: number | null, codes: Code[]) {
-    super(name);
+    super(name, codes);
     this.type = 'DiagnosticReport';
     this.numberOfObservations = numberOfObservations;
-    this.codes = codes;
   }
 
   toJSON(): any {
     return {
       ...super.toJSON(),
-      number_of_observations: this.numberOfObservations,
-      codes: this.codes
+      number_of_observations: this.numberOfObservations
     };
   }
 }
@@ -383,19 +374,8 @@ export type AnyState =
   | TerminalState
   | InitialState;
 
-export type HasCodes =
-  | EncounterState
-  | ConditionOnsetState
-  | AllergyOnsetState
-  | MedicationOrderState
-  | CarePlanStartState
-  | ProcedureState
-  | ObservationState
-  | MultiObservationState
-  | DiagnosticReportState;
-
-export const doesHaveCodes = (tbd: AnyState): tbd is HasCodes => {
-  if ((tbd as HasCodes).codes) {
+export const doesHaveCodes = (tbd: AnyState): tbd is StateWithCodes => {
+  if ((tbd as StateWithCodes).hasCodesField) {
     return true;
   }
   return false;
