@@ -33,9 +33,9 @@ export function exportModule(libName: string, dataTypes: CalculatorTypes.DataTyp
   dataTypes.forEach((object, i) => {
     const stateName = `${object.dataType}_${i}`;
 
-    if (object.dataType !== null && factory(object.dataType, stateName) !== null) {
+    if (object.dataType !== null) {
       const stateClass = factory(object.dataType, stateName);
-      if (object.valueSet !== undefined && stateClass && states.doesHaveCodes(stateClass)) {
+      if (object.valueSet !== undefined && stateClass && stateClass instanceof states.StateWithCodes) {
         stateClass.codes.push({
           system: '',
           code: '',

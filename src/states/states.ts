@@ -32,10 +32,6 @@ export class StateWithCodes extends BaseState {
     this.codes = codes;
   }
 
-  public get hasCodesField(): boolean {
-    return true;
-  }
-
   toJSON(): any {
     return {
       ...super.toJSON(),
@@ -373,10 +369,3 @@ export type AnyState =
   | DeviceState
   | TerminalState
   | InitialState;
-
-export const doesHaveCodes = (tbd: AnyState): tbd is StateWithCodes => {
-  if ((tbd as StateWithCodes).hasCodesField) {
-    return true;
-  }
-  return false;
-};
