@@ -1,6 +1,5 @@
 import { Command } from 'commander';
 import fs from 'fs';
-import { R4 } from '@ahryman40k/ts-fhir-types';
 import { getRetrieves } from './RetrievesHelper';
 import { exportModule } from './ExportModule';
 
@@ -11,9 +10,9 @@ program
   .requiredOption('-b, --bundle <bundle>', 'path to bundle containing FHIR Libraries')
   .parse(process.argv);
 
-function parseBundle(): R4.IBundle {
+function parseBundle(): fhir4.Bundle {
   const options = program.opts();
-  return JSON.parse(fs.readFileSync(options.bundle, 'utf8')) as R4.IBundle;
+  return JSON.parse(fs.readFileSync(options.bundle, 'utf8')) as fhir4.Bundle;
 }
 
 const measureBundle = parseBundle();
